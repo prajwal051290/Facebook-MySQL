@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Facebook Home</title>
+<link rel="stylesheet" href="../stylesheets/style.css" type="text/css" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<style>
+a.navigate {
+	font-size: 30px;
+}
+
+a.navigate1 {
+	font-size: 20px;
+}
+</style>
+
+
+</head>
+
+<body class="login" ng-app="homeAngular" ng-controller="homeController">
+<!-- header starts here -->
+<div id="facebook-Bar">
+  <div id="facebook-Frame">
+    <div id="logo"> <a href="/home">Facebook</a> </div>
+    
+         
+        <div id="header-main-right">
+          <div id="header-main-right-nav">
+        
+          <table border="0" style="border:none">
+            <tr>
+              <td ><input type="text" tabindex="1" placeholder="Search Friends" class="inputtext radius1" value="" ng-model="search"></td>
+              <td ><button class="fbbutton" ng-click="searchFriend()">Search</button></td>
+              <td ><button class="fbbutton" ng-click="logout()">Logout</button></td>
+            </tr>
+          </table>
+        
+      </div>
+      		
+          </div>
+      </div>
+</div>
+<!-- header ends here -->
+
+
+<div class="container">
+  <ul class="list-inline">
+    <li><a href="/about" class="navigate">About | </a></li>
+    <li><a href="/group" class="navigate">Groups | </a></li>
+    <li><a href="#" class="navigate">Friends</a></li>
+  </ul>
+</div>
+
+
+
+<br><br>
+  		  		
+
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+						<li class="active">
+							<a href="/about" class="navigate1">
+							<i class="glyphicon glyphicon-home"></i>
+							Overview </a>
+						</li>
+						<li>
+							<a href="/workedu" class="navigate1">
+							<i class="glyphicon glyphicon-education"></i>
+							Work and Education </a>
+						</li>
+						<li>
+							<a href="/contactInfo" target="_blank" class="navigate1">
+							<i class="glyphicon glyphicon-phone"></i>
+							Contact Info </a>
+						</li>
+						<li>
+							<a href="/life" class="navigate1">
+							<i class="glyphicon glyphicon-wrench"></i>
+							Life Events </a>
+						</li>
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9">
+            <div class="profile-content">
+			   
+		
+		<!--Start of USer Content-->
+		
+			   <div style = "padding: 100px 100px 10px;">
+   
+   				<form class = "bs-example bs-example-form" role = "form">
+      				<div class = "input-group">
+         				<span class = "input-group-addon">University Name</span>
+         				<input type = "text" class = "form-control" placeholder = "University" ng-model="Uni">
+      				</div>
+		
+      				<br>
+
+      				<div class = "input-group">
+      					<span class = "input-group-addon">University Location</span>
+         				<input type = "text" class = "form-control" placeholder = "City" ng-model="City">
+         			</div>
+		
+      				<br>
+      
+      				<div class = "input-group">
+         				<span class = "input-group-addon">Company Name</span>
+         				<input type = "text" class =" form-control" placeholder = "Company" ng-model="Comp">
+         			</div>
+         			
+         			<br>
+         			
+         			<div class = "input-group">
+         				<span class = "input-group-addon">Company Location</span>
+         				<input type = "text" class =" form-control" placeholder = "Country" ng-model="Country">
+         			</div>
+         			
+         			<br>
+         			
+         			<div class = "input-group">
+         				<span class = "input-group-addon">Designation</span>
+         				<input type = "text" class =" form-control" placeholder = "Works as" ng-model="Designation">
+         			</div>
+         			
+         			<br>
+         			
+         			<button type="button" class="btn btn-success pull-right" ng-click="saveWorkEdu()">Save</button>
+         			
+         			<br>
+         			
+         			{{saveStatus}}
+         			
+         		</form>
+   
+			</div>
+			
+		<!--End of USer Content-->	   
+			   
+            </div>
+		</div>
+	</div>
+</div>
+<br>
+<br>
+
+<script>
+  
+  	var home = angular.module('homeAngular', []);
+	home.controller('homeController', homeOperations); 
+	
+	<!--Home Function-->
+	
+	function homeOperations($scope, $http) {
+  		
+  	<!--Save Work and Education-->
+  	
+  	$scope.saveWorkEdu = function(){
+  		
+  			var workEduInfo = "";
+  			
+  			workEduInfo = {uniName:$scope.Uni, uniLoc:$scope.City, compName:$scope.Comp, compLoc:$scope.Country, desig:$scope.Designation};
+  			
+  			console.log("Inside saveWorkEdu function");
+  			$http.post("/saveWorkEdu", workEduInfo)
+  			.success(function(data) {
+  				console.log("Success returned saveWorkEdu function");
+  				$scope.saveStatus = "DETAILS SAVED SUCCESSFULLY!!!";
+  			})
+  			
+  	}
+  	
+  	
+}
+		
+</script>
+
+
+</body>
+
+</html>
