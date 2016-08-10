@@ -18,3 +18,20 @@ Server-Side: NodeJs<br>
 Middleware: RabbitMQ<br>
 Backend: MySQL, MongoDB<br>
 Tools: Jmeter<br>
+
+Screenshots:<br>
+
+Home:<br>
+<img src = "https://github.com/prajwal051290/Facebook-Prototype/blob/master/Project%20Screenshots/Home.jpg"/><br/><br>
+
+Login & SignUp:<br>
+<img src = "https://github.com/prajwal051290/Facebook-Prototype/blob/master/Project%20Screenshots/Login_SignUp.jpg"/><br/><br>
+
+Profile:<br>
+<img src = "https://github.com/prajwal051290/Facebook-Prototype/blob/master/Project%20Screenshots/Profile.jpg"/><br/><br>
+
+Friends Page:<br>
+<img src = "https://github.com/prajwal051290/Facebook-Prototype/blob/master/Project%20Screenshots/Friends.jpg"/><br/><br>
+
+News Feed:<br>
+<img src = "https://github.com/prajwal051290/Facebook-Prototype/blob/master/Project%20Screenshots/Feeds.jpg"/><br/><br>
